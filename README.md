@@ -34,7 +34,7 @@
 - `.runpod/tests.json` (simple echo test)
 - `handler.py` (Runpod worker)
 - Create a **GitHub Release**, then add the repo in **Runpod → Hub** and publish. (The Hub indexes **releases**, not commits.)  
-- You can also deploy from GitHub directly into a Serverless endpoint via the **GitHub integration**. :contentReference[oaicite:4]{index=4}
+- You can also deploy from GitHub directly into a Serverless endpoint via the **GitHub integration**.
 
 ## Local dev
 ```bash
