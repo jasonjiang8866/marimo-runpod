@@ -5,8 +5,8 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install --upgrade pip && pip install -r /tmp/requirements.txt
 RUN mkdir -p ${WORKSPACE}/notebooks
 COPY notebooks/welcome.py ${WORKSPACE}/notebooks/welcome.py
-COPY handler.py /app/handler.py
-COPY start.sh /start.sh
+COPY .runpod/handler.py /app/handler.py
+COPY .runpod/start.sh /start.sh
 RUN chmod +x /start.sh
 EXPOSE 2718
 RUN printf 'user root;\nworker_processes auto;\nerror_log /var/log/nginx/error.log warn;\npid /var/run/nginx.pid;\n' > /etc/nginx/nginx.conf
