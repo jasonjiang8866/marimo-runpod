@@ -1,0 +1,20 @@
+# Core notebook UI
+marimo>=0.9.0
+uv>=0.4.20
+
+# Hugging Face / LLM study stack
+transformers>=4.44
+datasets>=2.20
+accelerate>=0.33
+peft>=0.12
+optimum>=1.20
+trl>=0.9
+safetensors>=0.4
+huggingface_hub>=0.24
+tokenizers>=0.19
+sentencepiece>=0.2
+einops>=0.7
+evaluate>=0.4
+
+# Quantization (optional at runtime; controlled by USE_BITSANDBYTES env)
+bitsandbytes>=0.44

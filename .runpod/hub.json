@@ -1,0 +1,114 @@
+{
+  "title": "Marimo LLM Lab (Pod + Serverless)",
+  "description": "One-click Marimo notebook on Runpod with common Hugging Face LLM libs. Dual-mode image: pod (Marimo) or serverless (handler.py).",
+  "type": "serverless",
+  "category": "language",
+  "iconUrl": "https://raw.githubusercontent.com/marimo-team/marimo/main/docs/_static/marimo-logotype-thick.svg",
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 20,
+    "gpuCount": 1,
+    "gpuIds": "AMPERE_16,AMPERE_24,AMPERE_48,AMPERE_80,ADA_24,ADA_48_PRO,ADA_80_PRO,HOPPER_141",
+    "allowedCudaVersions": ["12.8","12.7","12.6","12.5","12.4","12.3","12.2","12.1","12.0"],
+    "presets": [
+      {
+        "name": "Marimo on Pod",
+        "defaults": {
+          "MODE_TO_RUN": "pod",
+          "MARIMO_MODE": "edit",
+          "MARIMO_NOTEBOOK": "/workspace/notebooks/welcome.py",
+          "MARIMO_PORT": 2718,
+          "USE_BITSANDBYTES": true
+        }
+      },
+      {
+        "name": "Serverless (echo test)",
+        "defaults": {
+          "MODE_TO_RUN": "serverless"
+        }
+      }
+    ],
+    "env": [
+      {
+        "key": "MODE_TO_RUN",
+        "input": {
+          "name": "Mode",
+          "type": "string",
+          "description": "pod -> Marimo UI; serverless -> Runpod handler",
+          "options": [
+            {"label": "pod (Marimo)", "value": "pod"},
+            {"label": "serverless (handler)", "value": "serverless"}
+          ],
+          "default": "pod",
+          "advanced": false
+        }
+      },
+      {
+        "key": "MARIMO_MODE",
+        "input": {
+          "name": "Marimo mode",
+          "type": "string",
+          "description": "marimo edit (editable) or marimo run (read-only app)",
+          "options": [
+            {"label": "edit", "value": "edit"},
+            {"label": "run", "value": "run"}
+          ],
+          "default": "edit",
+          "advanced": false
+        }
+      },
+      {
+        "key": "MARIMO_NOTEBOOK",
+        "input": {
+          "name": "Notebook path",
+          "type": "string",
+          "description": "Path to the Marimo notebook",
+          "default": "/workspace/notebooks/welcome.py",
+          "advanced": false
+        }
+      },
+      {
+        "key": "MARIMO_PORT",
+        "input": {
+          "name": "Notebook port",
+          "type": "number",
+          "description": "Public port to expose via Runpod proxy",
+          "min": 1024,
+          "max": 65535,
+          "default": 2718
+        }
+      },
+      {
+        "key": "MARIMO_TOKEN",
+        "input": {
+          "name": "Optional access token",
+          "type": "string",
+          "description": "If set, Marimo uses this as the password; otherwise auth is disabled",
+          "default": "",
+          "advanced": true
+        }
+      },
+      {
+        "key": "HF_TOKEN",
+        "input": {
+          "name": "Hugging Face token (optional)",
+          "type": "string",
+          "description": "Used for gated models / higher rate limits",
+          "default": "",
+          "advanced": true
+        }
+      },
+      {
+        "key": "USE_BITSANDBYTES",
+        "input": {
+          "type": "boolean",
+          "name": "Install bitsandbytes support",
+          "description": "Enable 8-bit/4-bit quantization workflows",
+          "default": true,
+          "trueValue": "true",
+          "falseValue": "false"
+        }
+      }
+    ]
+  }
+}
