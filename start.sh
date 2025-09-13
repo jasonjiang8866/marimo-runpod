@@ -40,9 +40,9 @@ else
   cd /workspace
   if [[ "${MARIMO_MODE}" == "run" ]]; then
     echo "[marimo] running read-only app at 0.0.0.0:${MARIMO_PORT}"
-    exec marimo run "${MARIMO_NOTEBOOK}" --host 0.0.0.0 --port "${MARIMO_PORT}" ${AUTH_FLAGS}
+    exec marimo run "${MARIMO_NOTEBOOK}" --host 0.0.0.0 --port "${MARIMO_PORT}" "${AUTH_FLAGS}"
   else
     echo "[marimo] running editor at 0.0.0.0:${MARIMO_PORT}"
-    exec marimo edit "${MARIMO_NOTEBOOK}" --host 0.0.0.0 --port "${MARIMO_PORT}" ${AUTH_FLAGS}
+    exec marimo edit "${MARIMO_NOTEBOOK}" --host 0.0.0.0 --port "${MARIMO_PORT}" "${AUTH_FLAGS}"
   fi
 fi
